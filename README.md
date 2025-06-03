@@ -5,8 +5,8 @@ This repository will mostly be focusing on slackbuilds compatible
 with the [labwc](https://github.com/labwc/labwc) compositor.
 
 Some of the dependencies here may rely on external dependencies.
-These are all available at [**mac-a-r0ni / nwg-shell_slackbuilds**](https://github.com/mac-a-r0ni/nwg-shell_slackbuilds)
-The depends are listed in the `.info` files in eaxh directory.
+These are all available at [**mac-a-r0ni / nwg-shell_slackbuilds**](https://github.com/mac-a-r0ni/nwg-shell_slackbuilds).
+The depends are listed in the `.info` files in each directory.
 
 ## additions
 If you have any wayland type slackbuilds you want to share then
