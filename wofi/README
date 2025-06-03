@@ -1,0 +1,3 @@
+Wofi is a launcher/menu program for wlroots based wayland compositors such as sway.
+
+This repository is a mirror of https://hg.sr.ht/~scoopta/wofi with some additions.

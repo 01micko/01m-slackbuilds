@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+xwwall: xwwall - Graphical wallpaper setter for X11 and Wayland
+xwwall: 
+xwwall: xwwall is a graphical wallpaper setter for the X Window System often
+xwwall: known as X11 and Wayland desktops for Linux and other *nix
+xwwall: distributions.
+xwwall:
+xwwall:
+xwwall:
+xwwall:
+xwwall: Home: https://git.sr.ht/~leon_plickat/xwwall
+xwwall:

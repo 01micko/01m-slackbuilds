@@ -1,0 +1,15 @@
+There is no .hg directory so meson setup fails
+Since slackware ships mercurial OOTB we patch in a dummy value
+so the thing will build correctly
+diff -Nur wofi-1.4.1.orig/meson.build wofi-1.4.1/meson.build
+--- wofi-1.4.1.orig/meson.build	2025-06-03 12:37:35.457338279 +1000
++++ wofi-1.4.1/meson.build	2025-06-03 12:38:08.007337130 +1000
+@@ -9,7 +9,7 @@
+ threads = dependency('threads')
+ dl = cc.find_library('dl')
+ 
+-hg = find_program('hg', native : true, required : false)
++hg = find_program('hgnope', native : true, required : false)
+ 
+ version = meson.project_version()
+ 

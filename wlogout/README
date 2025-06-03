@@ -1,0 +1,3 @@
+wlogout can be easily styled through the style.css file. If you would like
+to style a button, use the label given to it in the layout file, and for
+other styling, refer to the GTK Manual, which shows all the allowed CSS.

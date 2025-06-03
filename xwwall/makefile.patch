@@ -1,0 +1,13 @@
+diff -Nur xwwall-0.2.4.orig/Makefile xwwall-0.2.4/Makefile
+--- xwwall-0.2.4.orig/Makefile	2025-05-11 21:17:00.000000000 +1000
++++ xwwall-0.2.4/Makefile	2025-06-02 09:50:11.082926092 +1000
+@@ -1,7 +1,7 @@
+-PREFIX?=/usr/local
++PREFIX?=/usr
+ BINDIR=$(PREFIX)/bin
+ DATADIR=$(PREFIX)/share
+-MANDIR=$(DATADIR)/man
++MANDIR=$(PREFIX)/man
+ 
+ .PHONY: install
+ 
