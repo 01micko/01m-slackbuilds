@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct.  It's also
 # customary to leave one space after the ':'.
 
-      |-----handy-ruler------------------------------------------------------|
+     |-----handy-ruler------------------------------------------------------|
 fnott: Fnott is a keyboard driven and lightweight notification daemon for 
 fnott: wlroots-based Wayland compositors.
-fnott: Notifications are automatically sized (with the possibility of limiting
-fnott: their max width and height)
-fnott:
-fnott:
-fnott:
-fnott:
+fnott: Notifications are automatically sized (with the possibility of
+fnott: limiting their max width and height)
 fnott:
 fnott: Home: https://codeberg.org/dnkl/fnott
+fnott:
+fnott:
+fnott:
+fnott:
 fnott:
