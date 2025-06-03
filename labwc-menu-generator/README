@@ -1,0 +1,13 @@
+labwc-menu-generator - menu generator for labwc compositor.
+
+Independent of Desktop Environments and associated menu-packages. This 
+is achieved by categorising system .desktop files against a built-in
+directory-schema rather than parsing .menu and .directory files
+(see Menu Specification).
+
+Desktop Entry Specification compliant parsing of Desktop Entry .desktop
+files.
+
+Openbox 3.6 formatted output.
+
+Localized values for .desktop file keys such as Name[sr_YU]

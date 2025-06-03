@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+                    |-----handy-ruler------------------------------------------------------|
+labwc-menu-generator: labwc-menu-generator - menu generator for labwc compositor.
+labwc-menu-generator:
+labwc-menu-generator: labwc-menu-generator is independent of Desktop Environments and 
+labwc-menu-generator: associated menu-packages. This is achieved by categorising system 
+labwc-menu-generator: .desktop files against a built-in directory-schema rather than parsing
+labwc-menu-generator: .menu and .directory files (see Menu Specification).
+labwc-menu-generator: Openbox 3.6 formatted output.
+labwc-menu-generator: Localized values for .desktop file keys such as Name[sr_YU]
+labwc-menu-generator:
+labwc-menu-generator: Home: https://github.com/labwc/labwc-menu-generator
+labwc-menu-generator:
