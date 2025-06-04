@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for fastfetch
+# Slackware build script for labwc-menu-generator
 
-# Copyright 2023-2025 Samuel Young, MO, USA
-# Modified 2025 Mick Amadio, Qld, Australia
+# Copyright 2025 Mick Amadio, Qld, Australia
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -25,13 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=fastfetch
-VERSION=${VERSION:-2.43.0}
+PRGNAM=labwc-menu-generator
+VERSION=${VERSION:-0.2.0}	
 BUILD=${BUILD:-1}
-TAG=${TAG:-_01m}
+TAG=${TAG:-_01m}		
 PKGTYPE=${PKGTYPE:-txz}
 
-wget -c https://github.com/fastfetch-cli/$PRGNAM/archive/${VERSION}/$PRGNAM-${VERSION}.tar.gz
+wget -c https://github.com/labwc/$PRGNAM/archive/refs/tags/${VERSION}.tar.gz
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -52,22 +51,31 @@ OUTPUT=${OUTPUT:-/tmp}
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+  LIBDIRSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
   SLKCFLAGS="-O2 -march=i686 -mtune=i686"
+  LIBDIRSUFFIX=""
 elif [ "$ARCH" = "x86_64" ]; then
-  SLKCFLAGS="-O2 -fPIC"
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+  LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -march=armv8-a -mtune=generic -fPIC"
+  LIBDIRSUFFIX="64"
 else
   SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
 fi
 
-set -e
+set -e 
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$VERSION.tar.gz
 cd $PRGNAM-$VERSION
+
+# Make sure ownerships and permissions are sane:
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -75,56 +83,37 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-mkdir -p build
+mkdir build
 cd build
-  cmake \
-    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPACKAGES_DISABLE_AM=ON \
-    -DPACKAGES_DISABLE_APK=ON \
-    -DPACKAGES_DISABLE_CHOCO=ON \
-    -DPACKAGES_DISABLE_DPKG=ON \
-    -DPACKAGES_DISABLE_EMERGE=ON \
-    -DPACKAGES_DISABLE_EOPKG=ON \
-    -DPACKAGES_DISABLE_LINGLONG=ON \
-    -DPACKAGES_DISABLE_LPKG=ON \
-    -DPACKAGES_DISABLE_LPKGBUILD=ON \
-    -DPACKAGES_DISABLE_MACPORTS=ON \
-    -DPACKAGES_DISABLE_OPKG=ON \
-    -DPACKAGES_DISABLE_PACMAN=ON \
-    -DPACKAGES_DISABLE_PACSTALL=ON \
-    -DPACKAGES_DISABLE_PALUDIS=ON \
-    -DPACKAGES_DISABLE_PKG=ON \
-    -DPACKAGES_DISABLE_RPM=ON \
-    -DPACKAGES_DISABLE_SCOOP=ON \
-    -DPACKAGES_DISABLE_SNAP=ON \
-    -DPACKAGES_DISABLE_SORCERY=ON \
-    -DPACKAGES_DISABLE_WINGET=ON \
-    -DPACKAGES_DISABLE_XBPS=ON \
-    -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
-  DESTDIR=$PKG cmake --install .
+  CFLAGS="$SLKCFLAGS" \
+  CXXFLAGS="$SLKCFLAGS" \
+  meson setup .. \
+  --prefix=/usr \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/libexec \
+  --bindir=/usr/bin \
+  --sbindir=/usr/sbin \
+  --includedir=/usr/include \
+  --datadir=/usr/share \
+  --mandir=/usr/man \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --buildtype=release \
+
+  "${NINJA:=ninja}"
+  DESTDIR=$PKG $NINJA install
+
 cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-rm -r $PKG/usr/share/licenses
-
-mv $PKG/usr/share/man $PKG/usr
-
+mv $PKG/usr/share/man $PKG/usr/man
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
-# Only install fish shell completions if fish is installed
-if [ ! -e /usr/bin/fish ]; then
-  rm -rv $PKG/usr/share/fish
-fi
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a \
-  CHANGELOG.md README.md LICENSE \
-  $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install

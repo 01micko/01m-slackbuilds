@@ -1,5 +1,5 @@
 # 01m-slackbuilds
-Mostly wayland related SlackBuild scripts
+A collection SlackBuild scripts
 
 This repository will mostly be focusing on slackbuilds compatible
 with the [labwc](https://github.com/labwc/labwc) compositor.
@@ -9,8 +9,9 @@ These are all available at [**mac-a-r0ni / nwg-shell_slackbuilds**](https://gith
 The depends are listed in the `.info` files in each directory.
 
 ## additions
-If you have any wayland type slackbuilds you want to share then
-you are most welcome to open a pull request.
+If you have any wayland specific slackbuilds you want to share then
+you are most welcome to open a pull request. Also accepting slackbuild
+scripts for programs that run in wayland natively.
 
 ## bugs
 Any bugs in the slackbuilds here report them in the isssues section.
