@@ -1,5 +1,5 @@
 # 01m-slackbuilds
-A collection SlackBuild scripts
+A collection of SlackBuild scripts
 
 This repository will mostly be focusing on slackbuilds compatible
 with the [labwc](https://github.com/labwc/labwc) compositor.
