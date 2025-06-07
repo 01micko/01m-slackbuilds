@@ -1,0 +1,13 @@
+folder-thumbnailer - thumbnail icons for your directories
+
+folder-thunmbnailer creates icons for your directories in thunar file
+manager such that a directory is represented by an icon. It supports
+JPEG, PNG and SVG so that if you have an icon theme (PNG or SVG) you can
+place a desired icon to a directory in your HOME and that directory will
+be a graphical representation of that directory. You can also make or
+usec ustom PNG or SVG icon. Just rename the icon to folder.png or
+folder.svg
+
+JPEG is useful for album covers either named cover.jpg or folder.jpg
+or hidden .folder.jpg. Use whatever name you music player requests.
+Some use "folder", some use "cover".
